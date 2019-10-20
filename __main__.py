@@ -1,16 +1,16 @@
 import time
-grid = [[1]*10 for _ in range(10)]
+grid = [[0]*10 for _ in range(10)]
 
 def main():
-    grid[4][2]=2
-    grid[3][3]=2
-    grid[2][2]=2
+    grid[4][2]=1
+    grid[3][3]=1
+    grid[2][2]=1
     print("-" * 50)
     gridprinter(grid)
     time.sleep(1)
     for row in range(len(grid)):
         for item in range(len(grid[row])):
-            print(countneighbours(grid,row,item),end=" ")
+            print(countneighbours(grid,row,item),end="")
         print()
 
 
@@ -20,8 +20,11 @@ def countneighbours(grid,row,item):
     for i in range(-1,2):
         for j in range(-1,2):
             if not(j==0 and i==0):
-                if grid[row][item]==1:
-                    count+=1
+                try:
+                    if grid[row+1][item+j]==1:
+                        count+=1
+                except IndexError:
+                    True
     return(count)
 
 
