@@ -21,7 +21,7 @@ def countneighbours(grid,row,item):
         for j in range(-1,2):
             if not(j==0 and i==0):
                 try:
-                    if grid[row+1][item+j]==1:
+                    if grid[row+i][item+j]==1:
                         count+=1
                 except IndexError:
                     True
